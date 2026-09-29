@@ -1,0 +1,78 @@
+/*
+ * All In City — theme_ui_skin/skin/tokens.css
+ * Source of truth for the dt_ui design tokens: THEME-BIBLE §3 palette, values per docs/theme/UI-SPEC.md section 1
+ * (1.1 colours, 1.2 surfaces, 1.3 radius/space/shadow/shape, 1.4 z-index, 1.5 motion). The token NAME SET must equal
+ * UI-SPEC section 1 exactly (tools/check-ui-tokens.js, which also checks the text contrast pairs of UI-SPEC §1.6).
+ * Typography tokens (--dt-font-*, --dt-text-*, --dt-hud-scale; UI-SPEC section 2) live in
+ * dt_ui/web/src/styles/fonts.css (--dt-hud-scale in base.css) because the fonts are embedded in dt_ui, not in the skin.
+ * Palette = Figma parity "charcoal + lantern orange" (founder decision D1, 2026-09-29 — ADR-013); every legacy token
+ * name is kept and re-valued, so every surface switches without a code change.
+ * dt_ui loads this file at runtime via nui://theme_ui_skin/skin/tokens.css; the app also ships a build-time
+ * fallback copy at dt_ui/web/src/styles/tokens.css that MUST stay byte-for-byte identical (same checker), and so does
+ * the ox_inventory UI fork (patches/ox_inventory/web/src/dt/tokens.css).
+ * Data only: no selectors other than :root, no fonts, no images, no logic.
+ */
+:root {
+  /* 1.1 Palette (bible section 3, ADR-013) */
+  --dt-color-bg: #1C1C1C;             /* Charcoal — panels, HUD chrome */
+  --dt-color-bg-2: #0C0C0C;           /* Carbon — modal bodies, deepest layer */
+  --dt-color-bg-3: #272624;           /* Soot — raised cards, table header rows, idle segments */
+  --dt-color-fg: #F3F1EC;             /* Chalk — primary text, every number, icon lines */
+  --dt-color-fg-2: #C9C6BF;           /* Chalk 80 — secondary text */
+  --dt-color-muted: #9C9891;          /* Ash — disabled, placeholder, captions */
+  --dt-color-primary: #FF9A0D;        /* Lantern Orange — the one accent: actions, titles, glowing numbers, focus */
+  --dt-color-primary-hi: #FFB23F;     /* Flame — light stop of orange gradients, hover of orange fills */
+  --dt-color-primary-lo: #C8620A;     /* Ember — 1 px rules, outlines, brackets (non-text only) */
+  --dt-color-on-primary: #1A1004;     /* text and glyphs on orange fills */
+  --dt-color-secondary: #7C8FF5;      /* Ink Periwinkle — Ink (หมึก), secondary buttons; text >= 14 px only */
+  --dt-color-accent: #E68AA8;         /* Petal Pink — fashion / runway accent */
+  --dt-color-info: #5AAFB1;           /* Mist Teal — info */
+  --dt-color-danger: #E5484D;         /* Signal Red — danger; surfaces/borders only, never small text */
+  --dt-color-success: #2FBF7F;        /* Signal Green — success */
+
+  /* 1.2 Surfaces (no backdrop-filter anywhere on the persistent HUD) */
+  --dt-panel: rgba(22, 22, 22, 0.90);
+  --dt-panel-strong: rgba(12, 12, 12, 0.94);
+  --dt-panel-ember: linear-gradient(180deg, rgba(14, 10, 6, 0.94) 0%, rgba(34, 20, 4, 0.94) 58%, rgba(92, 50, 13, 0.92) 100%);
+  --dt-panel-border: 1px solid rgba(255, 154, 13, 0.22);
+  --dt-hairline: rgba(243, 241, 236, 0.10);
+  --dt-hairline-accent: rgba(255, 154, 13, 0.45);
+  --dt-scrim: rgba(0, 0, 0, 0.55);
+
+  /* 1.3 Shape */
+  --dt-radius-xs: 2px;
+  --dt-radius-s: 4px;
+  --dt-radius-m: 8px;
+  --dt-radius-l: 12px;
+  --dt-shape-skew: -18deg;
+  --dt-shape-chamfer: 12px;
+  --dt-shape-bracket: 16px;
+
+  /* 1.3 Spacing scale */
+  --dt-space-1: 4px;
+  --dt-space-2: 8px;
+  --dt-space-3: 12px;
+  --dt-space-4: 16px;
+  --dt-space-5: 24px;
+  --dt-space-6: 32px;
+
+  /* 1.3 Shadow + glow — box-shadow / text-shadow only (cheap on CEF; never filter/backdrop-filter) */
+  --dt-shadow-panel: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --dt-glow-primary: 0 0 0 1px rgba(255, 154, 13, 0.45), 0 0 16px rgba(255, 154, 13, 0.30);
+  --dt-glow-secondary: 0 0 0 1px rgba(124, 143, 245, 0.45), 0 0 16px rgba(124, 143, 245, 0.30);
+  --dt-glow-moon: 0 0 24px rgba(255, 178, 63, 0.22);
+  --dt-glow-text: 0 0 6px rgba(255, 154, 13, 0.55), 0 0 16px rgba(255, 154, 13, 0.30);
+
+  /* 1.4 Layering */
+  --dt-z-hud: 10;
+  --dt-z-toast: 20;
+  --dt-z-modal: 30;
+  --dt-z-overlay: 40;
+
+  /* 1.5 Motion (200-300 ms ease-out for UI, 800 ms for night-phase transitions) */
+  --dt-dur-fast: 200ms;
+  --dt-dur-base: 250ms;
+  --dt-dur-slow: 300ms;
+  --dt-dur-moon: 800ms;
+  --dt-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}

@@ -1,0 +1,87 @@
+// All In City: upstream's single stylesheet is reduced to the resets and the transition classes of Fade / SlideUp;
+// every inventory style lives in dt/inventory.css (design tokens from dt/tokens.css, fonts from dt/fonts.css).
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  background: none !important;
+  overflow: hidden !important;
+  user-select: none;
+}
+
+#root {
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.app-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.tooltip-markdown > p {
+  margin: 0;
+}
+
+.transition-fade-enter {
+  opacity: 0;
+}
+
+.transition-fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.transition-fade-exit {
+  opacity: 1;
+}
+
+.transition-fade-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.transition-slide-up-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.transition-slide-up-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition:
+    opacity 250ms,
+    transform 250ms;
+}
+
+.transition-slide-up-exit {
+  opacity: 1;
+}
+
+.transition-slide-up-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}

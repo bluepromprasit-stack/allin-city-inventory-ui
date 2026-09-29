@@ -1,0 +1,43 @@
+/*
+ * All In City fork of the ox_inventory UI — fonts + typography tokens (docs/theme/UI-SPEC.md section 2).
+ * Bai Jamjuree 400/500/600 (SIL OFL 1.1, ./fonts/OFL.txt) — the same Thai + Latin subset that dt_ui ships
+ * (resources/[ui]/dt_ui/web/src/styles/fonts/, provenance in its README.md). The .woff2 files are inlined into
+ * build/assets/index.css by vite.config.ts (assetsInlineLimit): ox_inventory's fxmanifest only serves *.js / *.css /
+ * index.html from web/build, so a separate font file would never load.
+ * unicode-range must match dt_ui fonts.css (Thai block minus U+0E3F, Basic Latin, Latin-1, dashes/quotes/bullet/ellipsis).
+ * This file is a self-contained copy on purpose (no import from dt_ui): everything bundled here is part of the GPL
+ * corresponding source of the fork.
+ */
+@font-face {
+  font-family: 'Bai Jamjuree';
+  src: url('./fonts/BaiJamjuree-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0E01-0E3A, U+0E40-0E5B, U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-201D, U+2022, U+2026;
+}
+@font-face {
+  font-family: 'Bai Jamjuree';
+  src: url('./fonts/BaiJamjuree-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0E01-0E3A, U+0E40-0E5B, U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-201D, U+2022, U+2026;
+}
+@font-face {
+  font-family: 'Bai Jamjuree';
+  src: url('./fonts/BaiJamjuree-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0E01-0E3A, U+0E40-0E5B, U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-201D, U+2022, U+2026;
+}
+
+:root {
+  --dt-font-ui: 'Bai Jamjuree', 'Noto Sans Thai', 'Sarabun', 'Leelawadee UI', 'Tahoma', 'Segoe UI', system-ui, sans-serif;
+  --dt-text-xs: 12px; /* menus/modals only, never on the HUD */
+  --dt-text-s: 14px;
+  --dt-text-m: 16px;
+  --dt-text-l: 20px;
+  --dt-text-xl: 28px;
+}
